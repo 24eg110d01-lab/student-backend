@@ -10,14 +10,15 @@ spring:
   data:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/student_management}
-      auto-index-creation: true
+      database: ${SPRING_DATA_MONGODB_DATABASE:student_management}
+      auto-index-creation: ${AUTO_INDEX_CREATION:false}
 
 app:
   jwt:
     secret: ${JWT_SECRET:studentManagementSecretKeySuperSecureMustBeAtLeast256BitsLongForHMACSHA256}
     expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24 hours
   cors:
-    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173}
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,https://*.vercel.app,https://*.render.com,https://*.onrender.com}
 
 springdoc:
   api-docs:
